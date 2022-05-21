@@ -183,6 +183,10 @@ Serial.println("beginning main loop");
 
 
   randNumber = random(500,6000);
+
+
+
+
   //   digitalWrite(LED_pin1, LOW);
   // digitalWrite(shock_pin1, LOW);
   //   digitalWrite(LED_pin2, LOW);
@@ -263,8 +267,12 @@ Serial.println("beginning main loop");
     Serial.println(game_mode);
     }
     
-    digitalWrite(LED_pin1, LOW);//turn lights off to indicate waiting for player inputs has concluded
-    digitalWrite(LED_pin2, LOW);
+    //turn off rgb LED
+      leds[0] = CRGB::Black;
+      FastLED.show();
+
+    // digitalWrite(LED_pin1, LOW);//turn lights off to indicate waiting for player inputs has concluded
+    // digitalWrite(LED_pin2, LOW);
   
 
  
@@ -302,36 +310,51 @@ Serial.println("beginning main loop");
     //run LED sequence:
   //randomize this eventually
   digitalWrite(LED_pin1, LOW);
+      //turn off rgb LED
+      leds[0] = CRGB::Black;
+      FastLED.show();
   // digitalWrite(LED_pin2, LOW);
 
 
-  digitalWrite(LED_pin1, HIGH);
-  delay(400);
-  digitalWrite(LED_pin1, LOW);
-  delay(300);
-  digitalWrite(LED_pin1, HIGH);
-  delay(250);
-  digitalWrite(LED_pin1, LOW);
-  delay(200);
-  digitalWrite(LED_pin1, HIGH);
-  delay(150);
-  digitalWrite(LED_pin1, LOW);
-  delay(100);
-  digitalWrite(LED_pin1, HIGH);
-  delay(75);
-  digitalWrite(LED_pin1, LOW);
-  delay(50);
-  digitalWrite(LED_pin1, HIGH);
-  delay(40);
-  digitalWrite(LED_pin1, LOW);
-  delay(30);
-  digitalWrite(LED_pin1, HIGH);
-  delay(20);
-  digitalWrite(LED_pin1, LOW);
 
-  delay(randNumber);
-  digitalWrite(LED_pin1, HIGH);
-  digitalWrite(LED_pin2, HIGH);
+//"stoplight" sequence of lights to start
+      leds[0] = CRGB::Red;
+  FastLED.show();
+  delay(500);
+  leds[0] = CRGB::Yellow;
+  FastLED.show();
+  delay(randNumber); //wait to turn green based on random time
+  leds[0] = CRGB::Green;
+  FastLED.show();
+
+
+  // digitalWrite(LED_pin1, HIGH);
+  // delay(400);
+  // digitalWrite(LED_pin1, LOW);
+  // delay(300);
+  // digitalWrite(LED_pin1, HIGH);
+  // delay(250);
+  // digitalWrite(LED_pin1, LOW);
+  // delay(200);
+  // digitalWrite(LED_pin1, HIGH);
+  // delay(150);
+  // digitalWrite(LED_pin1, LOW);
+  // delay(100);
+  // digitalWrite(LED_pin1, HIGH);
+  // delay(75);
+  // digitalWrite(LED_pin1, LOW);
+  // delay(50);
+  // digitalWrite(LED_pin1, HIGH);
+  // delay(40);
+  // digitalWrite(LED_pin1, LOW);
+  // delay(30);
+  // digitalWrite(LED_pin1, HIGH);
+  // delay(20);
+  // digitalWrite(LED_pin1, LOW);
+
+  // delay(randNumber);
+  // digitalWrite(LED_pin1, HIGH);
+  // digitalWrite(LED_pin2, HIGH);
 
   //check that no buttons are pressed before turning "green"
     //reset time right before green light to accurately record time
@@ -388,8 +411,10 @@ Serial.println("beginning main loop");
   Serial.println(player2_time);
   delay(1100);
       ready_to_start=0; // reset for next game
-  digitalWrite(LED_pin1, LOW);
-  digitalWrite(LED_pin2, LOW);
+        leds[0] = CRGB::Black;
+        FastLED.show();
+  // digitalWrite(LED_pin1, LOW);
+  // digitalWrite(LED_pin2, LOW);
   digitalWrite(shock_pin1,LOW);
   digitalWrite(shock_pin2,LOW);
   player1_time=0;
@@ -401,38 +426,51 @@ Serial.println("beginning main loop");
   if (game_mode==1){//only one winner
   Serial.println("entering game mode 1 loop:");
     //run LED sequence:
-  //randomize this eventually
-  digitalWrite(LED_pin1, LOW);
-  digitalWrite(LED_pin2, LOW);
+
+    //"stoplight" sequence of lights to start
+      leds[0] = CRGB::Red;
+  FastLED.show();
+  delay(500);
+  leds[0] = CRGB::Yellow;
+  FastLED.show();
+  delay(randNumber); //wait to turn green based on random time
+  leds[0] = CRGB::Green;
+  FastLED.show();
 
 
-  digitalWrite(LED_pin1, HIGH);
-  delay(400);
-  digitalWrite(LED_pin1, LOW);
-  delay(300);
-  digitalWrite(LED_pin1, HIGH);
-  delay(250);
-  digitalWrite(LED_pin1, LOW);
-  delay(200);
-  digitalWrite(LED_pin1, HIGH);
-  delay(150);
-  digitalWrite(LED_pin1, LOW);
-  delay(100);
-  digitalWrite(LED_pin1, HIGH);
-  delay(75);
-  digitalWrite(LED_pin1, LOW);
-  delay(50);
-  digitalWrite(LED_pin1, HIGH);
-  delay(40);
-  digitalWrite(LED_pin1, LOW);
-  delay(30);
-  digitalWrite(LED_pin1, HIGH);
-  delay(20);
-  digitalWrite(LED_pin1, LOW);
 
-  delay(randNumber);
-  digitalWrite(LED_pin1, HIGH);
-  digitalWrite(LED_pin2, HIGH);
+  // //randomize this eventually
+  // digitalWrite(LED_pin1, LOW);
+  // digitalWrite(LED_pin2, LOW);
+
+
+  // digitalWrite(LED_pin1, HIGH);
+  // delay(400);
+  // digitalWrite(LED_pin1, LOW);
+  // delay(300);
+  // digitalWrite(LED_pin1, HIGH);
+  // delay(250);
+  // digitalWrite(LED_pin1, LOW);
+  // delay(200);
+  // digitalWrite(LED_pin1, HIGH);
+  // delay(150);
+  // digitalWrite(LED_pin1, LOW);
+  // delay(100);
+  // digitalWrite(LED_pin1, HIGH);
+  // delay(75);
+  // digitalWrite(LED_pin1, LOW);
+  // delay(50);
+  // digitalWrite(LED_pin1, HIGH);
+  // delay(40);
+  // digitalWrite(LED_pin1, LOW);
+  // delay(30);
+  // digitalWrite(LED_pin1, HIGH);
+  // delay(20);
+  // digitalWrite(LED_pin1, LOW);
+
+  // delay(randNumber);
+  // digitalWrite(LED_pin1, HIGH);
+  // digitalWrite(LED_pin2, HIGH);
 
   //check that no buttons are pressed before turning "green"
     //reset time right before green light to accurately record time
@@ -534,6 +572,10 @@ Serial.println("beginning main loop");
 
   delay(1100);
       ready_to_start=0; // reset for next game
+
+      leds[0] = CRGB::Black;
+      FastLED.show();
+
   digitalWrite(LED_pin1, LOW);
   digitalWrite(LED_pin2, LOW);
   digitalWrite(shock_pin1,LOW);
